@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'reman.apps.resourcemanager'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
