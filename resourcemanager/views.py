@@ -6,14 +6,14 @@ from django.contrib.auth import login, logout, authenticate
 from .models import Student
 # Create your views here.
 
-def index(request):
+def index(request):             #view to display the index page
      context = {}
      context['name'] = 'sai'
      return render(request, 'index.html',context)
 
-def signup(request):
-    if request.method == 'GET':
-        context = {}
+def signup(request):            #view for users to sign up
+    if request.method == 'GET': #renders the signup page in GET
+        context = {}            #adds user to the database in POST
         return render (request, 'signup.html',context)
     elif request.method == 'POST':
         context = {}
@@ -36,12 +36,14 @@ def signup(request):
             stu.save()
             return render(request, 'sconfpage.html', context)
 
-def sconfpage(request):
-    return render(request, 'sconfpage.html')
+def sconfpage(request):                         #view to render a sample confirmation page
+    return render(request, 'sconfpage.html')    # is being used to see if a user is able to login
+                                                # will be replaced by a new home page later     
 
-def login_request(request):
-    if request.method =='GET':
-        context = {}
+
+def login_request(request):                    # A view to authenticate the user and log him in                
+    if request.method =='GET':                 # GET renders a login page 
+        context = {}                           # POST authenticates the user and logs him in 
         return render (request, 'login.html', context)
     if request.method =='POST':
         context = {}
@@ -55,8 +57,8 @@ def login_request(request):
             context['message'] = "invalid username or password"
             return render(request, 'login.html', context)
 
-def logout_request(request):
-    logout(request)
+def logout_request(request):                    #A view to logout the user
+    logout(request)                             # nothing more to say here :)                    
     return redirect ('index')
 
 #@csrf_exempt
