@@ -1,15 +1,31 @@
 <html>
     <head>
-        Signup
+         Student Signup
     </head>
     <body>
         <div>
             <p> navbar goes here </p>
-            <forms>
-                <label for = "name"> NAME : </label><br>
-                <input type = "text" id = 'name' name = 'name'><br> 
-                <label for = "name"> RAM ID : </label><br>
-                <input type = "text" id = 'ramid' name = 'ramid'><br> 
+            <form action="{% url 'signup' %}" method="post">
+                {%csrf_token%}
+                <label for = "username"> Username : </label><br>
+                <input type = "text" id = 'username' name = 'username'><br> 
+                <label for = "email"> Email ID : </label><br>
+                <input type = "email" id = 'email' name = 'email'><br>
+                <label for = "psw"> Password : </label><br>
+                <input type = "psw" id = 'psw' name = 'psw'><br>
+                <label for = "fname"> First name : </label><br>
+                <input type = "text" id = 'fname' name = 'fname'><br>
+                <label for = "lname"> Last name : </label><br>
+                <input type = "text" id = 'lname' name = 'lname'><br>
+                <label for = "ramid"> RAM ID : </label><br>
+                <input type = "text" id = 'ramid' name = 'ramid'><br>
+                <label for = "course"> Course : </label><br>
+                <select id = "course" name="course">s
+                    <option value='EET'>EET</option>
+                    <option value='CET'>CET</option>
+                    <option value='MET'>MET</option>
+                </select>
+                <button type = "submit">submit</button>    
                 <p> add as necassary </p>
             </form>
         </div>

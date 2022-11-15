@@ -1,0 +1,32 @@
+<html>
+    <head>
+        {% load static %}
+        resource manager
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        <h1>Sconfpage - {{name}}</h1>
+        <h2>just a sample page to see if post requests are working</h2>
+        <p> links </p>
+        <p></p> 
+        <div>
+            
+            <p>Hello {{user.first_name}}</p>
+            
+        </div>
+        <div>
+            <ul>
+                <li> <a href = "" >index</a> </li>
+                <li> <a href = "{% url 'signup' %}" >Signup</a> </li>
+                <li> <a href = "{% url 'login' %}"> login </li>
+                <li> <a href = "{% url 'logout' %}"> logout </li>
+
+            </ul>
+        </div>
+        {% else %}
+        <div>
+            <P>ACCESS DENIED</p>
+        <div>
+        {% endif %}
+    </body>
+</html>
