@@ -9,6 +9,7 @@ class Staff(models.Model):
 class Student(models.Model):
     user = user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     ram_id = models.CharField(max_length=20, null = False)
+    rfid_uid = models.CharField(max_length =8, default= "00000000")
     EET = 'EET'
     CET = 'CET'
     MET = 'MET'

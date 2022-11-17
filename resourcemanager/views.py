@@ -11,10 +11,10 @@ def index(request):             #view to display the index page
      context['name'] = 'sai'
      return render(request, 'index.html',context)
 
-def signup(request):            #view for users to sign up
+def student_register(request):            #view for users to sign up
     if request.method == 'GET': #renders the signup page in GET
         context = {}            #adds user to the database in POST
-        return render (request, 'signup.html',context)
+        return render (request, 'student_register.html',context)
     elif request.method == 'POST':
         context = {}
         username = request.POST['username']
@@ -23,6 +23,7 @@ def signup(request):            #view for users to sign up
         ramid = request.POST['ramid']
         course = request.POST['course']
         psw = request.POST['psw']
+        rfid_uid = request.POST["rfiduid"]
         user_exist = False
         try:
             print(1)
@@ -35,14 +36,14 @@ def signup(request):            #view for users to sign up
         if not user_exist:
             user = User.objects.create_user(username=username, first_name=fname, last_name=lname, password=psw)
             login(request, user)
-            stu = Student(user=user,ram_id=ramid,course=course)
+            stu = Student(user=user,ram_id=ramid,course=course,rfid_uid = rfid_uid)
             stu.save()
             return render(request, 'sconfpage.html', context)
         else:
             print(3)
             context['message'] = "User already exists please login"
             print(4)
-            return render(request, 'signup.html',context)
+            return render(request, 'student_register.html',context)
             print(5)
 
 def sconfpage(request):                         #view to render a sample confirmation page

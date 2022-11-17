@@ -6,7 +6,7 @@
         <div>
             <p> navbar goes here </p>
             {{message}}
-            <form action="{% url 'signup' %}" method="post">
+            <form action="{% url 'studentregister' %}" method="post">
                 {%csrf_token%}
                 <label for = "username"> Username : </label><br>
                 <input type = "text" id = 'username' name = 'username'><br> 
@@ -20,6 +20,8 @@
                 <input type = "text" id = 'lname' name = 'lname'><br>
                 <label for = "ramid"> RAM ID : </label><br>
                 <input type = "text" id = 'ramid' name = 'ramid'><br>
+                <label for = "rfid_uid"> RFID_UID : </label><br>
+                <input type = "text" id = 'rfiduid' name = 'rfiduid'><br>
                 <label for = "course"> Course : </label><br>
                 <select id = "course" name="course">s
                     <option value='EET'>EET</option>
