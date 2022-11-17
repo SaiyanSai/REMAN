@@ -5,6 +5,7 @@
     <body>
         <div>
             <p> navbar goes here </p>
+            {{message}}
             <form action="{% url 'signup' %}" method="post">
                 {%csrf_token%}
                 <label for = "username"> Username : </label><br>

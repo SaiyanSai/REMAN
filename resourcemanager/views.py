@@ -25,9 +25,12 @@ def signup(request):            #view for users to sign up
         psw = request.POST['psw']
         user_exist = False
         try:
+            print(1)
             User.objects.get(username=username)
+            print(2)
             user_exist = True
-        except:
+           
+        except:     
             print("New User")
         if not user_exist:
             user = User.objects.create_user(username=username, first_name=fname, last_name=lname, password=psw)
@@ -35,6 +38,12 @@ def signup(request):            #view for users to sign up
             stu = Student(user=user,ram_id=ramid,course=course)
             stu.save()
             return render(request, 'sconfpage.html', context)
+        else:
+            print(3)
+            context['message'] = "User already exists please login"
+            print(4)
+            return render(request, 'signup.html',context)
+            print(5)
 
 def sconfpage(request):                         #view to render a sample confirmation page
     return render(request, 'sconfpage.html')    # is being used to see if a user is able to login
