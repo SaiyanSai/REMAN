@@ -7,5 +7,6 @@ urlpatterns = [
     path('login/', views.login_request, name='login'),
     path('sconfpage/',views.sconfpage,name='sconfpage'),
     path('logout/', views.logout_request, name='logout'),
+    path('deviceregister/',views.device_register, name='device_register'),
     # path('givedata/',views.givedata, name = 'givedata'),   example http end point
 ]

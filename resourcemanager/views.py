@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Student
+from .models import Student, Device
 # Create your views here.
 
 def index(request):             #view to display the index page
@@ -71,6 +71,31 @@ def logout_request(request):                    #A view to logout the user
     logout(request)                             # nothing more to say here :)                    
     return redirect ('index')
 
+def device_register(request):
+    if request.method == 'GET':
+        context = {}
+        return render(request, 'device_register.html', context)
+    if request.method == 'POST':
+        context = {}
+        deviceid = request.POST['deviceid']
+        deviceman = request.POST['deviceman']
+        devicename = request.POST['devicename']
+        roomnumber = request.POST['roomnumber']
+        building = request.POST['building']
+        if not deviceid or not deviceman or not devicename or not roomnumber or not building:
+            context['message'] = 'A field was left blank'
+            return render(request, 'device_register.html',context)
+        device_exist = False
+        try:
+            Device.objects.get(device_id = deviceid)
+            device_exist = True
+        except:
+            print('new device')
+        if not device_exist:
+            device = Device(device_id = deviceid, device_manufacturer = deviceman, device_name = devicename, room_number= roomnumber, hall = building)
+            device.save()
+            context['message'] = 'DEVICE ADDED SUCCESFULLY'
+            return render(request, 'device_register.html', context)
 #@csrf_exempt
 #def givedata(request):     
 #    if request.method == 'GET':                AN EXAMPLE HTTP REQUEST HANDLER

@@ -20,3 +20,17 @@ class Student(models.Model):
         choices= cource_choices,
         default = EET
     )
+
+class Device(models.Model):
+    device_id = models.CharField(max_length=10, null=False)
+    device_manufacturer = models.CharField(max_length=20, null=False)
+    device_name = models.CharField(max_length=20, null=False)
+    room_number = models.IntegerField()
+    lupton = 'Lupton'
+    gleeson = 'Gleeson'
+    whitmann = 'Whitmann'
+    hall_choices = [(lupton, 'Lupton'),(gleeson, 'Gleeson'),(whitmann, 'Whitmann')]
+    hall = models.CharField(null = False,
+                            max_length = 10,
+                            choices = hall_choices,
+                            default = lupton)

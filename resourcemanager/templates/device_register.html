@@ -1,0 +1,30 @@
+<html>
+    <head>
+         Device registration page
+    </head>
+    <body>
+        <div>
+            <p> navbar goes here </p>
+            {{message}}
+            <form action="{% url 'device_register' %}" method="post">
+                {%csrf_token%}
+                <label for = "deviceid"> Device ID : </label><br>
+                <input type = "text" id = 'deviceid' name = 'deviceid'><br> 
+                <label for = "deviceman"> Device Manufacturer : </label><br>
+                <input type = "text" id = 'deviceman' name = 'deviceman'><br>
+                <label for = "devicename"> Device Name : </label><br>
+                <input type = "text" id = 'devicename' name = 'devicename'><br>
+                <label for = "roomnumber"> Room Number : </label><br>
+                <input type = "text" id = 'roomnumber' name = 'roomnumber'><br> <!--continue from here-->
+                <label for = "building"> Building : </label><br>
+                <select id = "building" name="building">s
+                    <option value='Lupton'>Lupton</option>
+                    <option value='Gleeson'>Gleeson</option>
+                    <option value='Whitman'>Whitman</option>
+                </select>
+                <button type = "submit">submit</button>    
+                <p> add as necassary </p>
+            </form>
+        </div>
+    </body>
+</html>
