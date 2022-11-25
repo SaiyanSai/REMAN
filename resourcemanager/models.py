@@ -2,6 +2,9 @@ from django.db import models
 from django.conf import settings
 
 # Create your models here.
+class Uniquekeys(models.Model):
+    unikey = models.CharField(max_length=20, null=False)
+
 class Staff(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     staff_id = models.CharField(max_length=20, null = False)

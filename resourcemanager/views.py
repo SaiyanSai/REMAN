@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Student, Device
+from .models import Student, Device, Uniquekeys ,Staff
 # Create your views here.
 
 def index(request):             #view to display the index page
@@ -96,6 +96,52 @@ def device_register(request):
             device.save()
             context['message'] = 'DEVICE ADDED SUCCESFULLY'
             return render(request, 'device_register.html', context)
+        
+def staff_register(request):
+    if request.method == 'GET':
+        context = {}
+        return render(request, 'staff_register.html', context)
+    elif request.method == 'POST':
+        context = {}
+        username = request.POST['username']
+        psw = request.POST['psw']
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        staffid = request.POST['staffid']
+        unikey = request.POST['uniquekey']
+        email = request.POST['email']
+    unikey_exist = False
+    try:
+        Uniquekeys.objects.get(unikey = unikey)
+        unikey_exist = True
+    except:
+        print('unikey error')
+        context['message'] = 'UNIKEY PROVIDED DOESNT EXIST'
+        return render(request, 'staff_register.html', context)
+    if unikey_exist:
+        print('unikey exist')
+    user_exist = False
+    try:
+            print(1)
+            User.objects.get(username=username)
+            print(2)
+            user_exist = True
+           
+    except:     
+            print("New User")
+    if not user_exist:
+            user = User.objects.create_user(username=username,email = email, first_name=fname, last_name=lname, password=psw)
+            login(request, user)
+            staff = Staff(user=user,staff_id = staffid)
+            staff.save()
+            return render(request, 'sconfpage.html', context)
+    else:
+            print(3)
+            context['message'] = "User already exists please login"
+            print(4)
+            return render(request, 'staff_register.html',context)
+            print(5)
+    
 #@csrf_exempt
 #def givedata(request):     
 #    if request.method == 'GET':                AN EXAMPLE HTTP REQUEST HANDLER
