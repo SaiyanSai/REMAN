@@ -12,6 +12,11 @@ def index(request):             #view to display the index page
      return render(request, 'index.html',context)
 
 def student_register(request):            #view for users to sign up
+    user = request.user
+    try:
+        staff = Staff.objects.get(user = user)
+    except:
+         return HttpResponse("User not autheticated to view this page")
     if request.method == 'GET': #renders the signup page in GET
         context = {}            #adds user to the database in POST
         return render (request, 'student_register.html',context)
@@ -72,6 +77,11 @@ def logout_request(request):                    #A view to logout the user
     return redirect ('index')
 
 def device_register(request):
+    user = request.user
+    try:
+        staff = Staff.objects.get(user = user)
+    except:
+         return HttpResponse("User not autheticated to view this page")
     if request.method == 'GET':
         context = {}
         return render(request, 'device_register.html', context)
@@ -122,9 +132,7 @@ def staff_register(request):
         print('unikey exist')
     user_exist = False
     try:
-            print(1)
             User.objects.get(username=username)
-            print(2)
             user_exist = True
            
     except:     
@@ -136,11 +144,8 @@ def staff_register(request):
             staff.save()
             return render(request, 'sconfpage.html', context)
     else:
-            print(3)
             context['message'] = "User already exists please login"
-            print(4)
             return render(request, 'staff_register.html',context)
-            print(5)
     
 #@csrf_exempt
 #def givedata(request):     
