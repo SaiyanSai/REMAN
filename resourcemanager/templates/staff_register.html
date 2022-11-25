@@ -1,0 +1,30 @@
+<html>
+    <head>
+         Staff register
+    </head>
+    <body>
+        <div>
+            <p> navbar goes here </p>
+            {{message}}
+            <form action="{% url 'staffregister' %}" method="post">
+                {%csrf_token%}
+                <label for = "username"> Username : </label><br>
+                <input type = "text" id = 'username' name = 'username'><br> 
+                <label for = "email"> Email ID : </label><br>
+                <input type = "email" id = 'email' name = 'email'><br>
+                <label for = "psw"> Password : </label><br>
+                <input type = "psw" id = 'psw' name = 'psw'><br>
+                <label for = "fname"> First name : </label><br>
+                <input type = "text" id = 'fname' name = 'fname'><br>
+                <label for = "lname"> Last name : </label><br>
+                <input type = "text" id = 'lname' name = 'lname'><br>
+                <label for = "staffid"> Staff ID : </label><br>
+                <input type = "text" id = 'staffid' name = 'staffid'><br>
+                <label for = "uniquekey"> Please enter your Unique code given to you by admin: </label><br>
+                <input type = "text" id = 'uniquekey' name = 'uniquekey'><br>
+                <button type = "submit">submit</button>    
+                <p> add as necassary </p>
+            </form>
+        </div>
+    </body>
+</html>
