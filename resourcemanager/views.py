@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .models import Student, Device, Uniquekeys ,Staff
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def index(request):             #view to display the index page
@@ -147,18 +148,18 @@ def staff_register(request):
             context['message'] = "User already exists please login"
             return render(request, 'staff_register.html',context)
     
-#@csrf_exempt
-#def givedata(request):     
-#    if request.method == 'GET':                AN EXAMPLE HTTP REQUEST HANDLER
-#        context = {                            TO INTERFACE WITH THE RFID PROTOTYPE
-#            'name' : 'sai',
-#            'id': 'R02089475'
-#        }
-#        return JsonResponse(context)
-#    if request.method == 'POST':
-#        name = request.POST['name']
-#        context = {
-#            'name' : name,
-#            'id ' : 'R02089477'
-#        }
-#        return JsonResponse(context)
+@csrf_exempt
+def givedata(request):     
+    if request.method == 'GET':            #    AN EXAMPLE HTTP REQUEST HANDLER
+        context = {                        #    TO INTERFACE WITH THE RFID PROTOTYPE
+            'name' : 'sai',
+            'id': 'R02089475'
+        }
+        return JsonResponse(context)
+    if request.method == 'POST':
+        name = request.POST['name']
+        context = {
+            'name' : name,
+            'id ' : 'R02089477'
+        }
+        return JsonResponse(context)
