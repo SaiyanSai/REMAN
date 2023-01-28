@@ -158,8 +158,13 @@ def givedata(request):
         return JsonResponse(context)
     if request.method == 'POST':
         name = request.POST['name']
+        uid = request.POST['uidVal']
+        deviceid = request.POST['deviceId']
         context = {
             'name' : name,
-            'id ' : 'R02089477'
+            'id ' : 'R02089477',
+            'uid' : uid,
+            'deviceid' : deviceid
+
         }
         return JsonResponse(context)
