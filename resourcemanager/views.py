@@ -157,14 +157,14 @@ def givedata(request):
         }
         return JsonResponse(context)
     if request.method == 'POST':
-        #name = request.POST['name']
-        uid = request.POST['uidVal']
-        deviceid = request.POST['deviceId']
-        if not uid or not deviceid:
+        #name = request.POST['name']\
+        if 'uidVal' not in request.POST or 'deviceId' not in request.POST:
             context = {
-                'msg' : 'error'
-                }
+                'MSG' : 'error'
+            }
         else:
+            uid = request.POST['uidVal']
+            deviceid = request.POST['deviceId']
             context = {
             #    'name' : name,
             #    'id ' : 'R02089477',
