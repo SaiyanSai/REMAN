@@ -157,11 +157,12 @@ def givedata(request):
         }
         return JsonResponse(context)
     if request.method == 'POST':
-        #name = request.POST['name']\
-      context = {
-                'MSG' : 'error'
-            }
-          return JsonReponse(context)
+        context = {                        #    TO INTERFACE WITH THE RFID PROTOTYPE
+            'name' : 'sai',
+            'id': 'R02089475'
+        }
+        return JsonResponse(context)
+      
     #    if 'uidVal' not in request.POST or 'deviceId' not in request.POST:
     #        context = {
     #            'MSG' : 'error'
