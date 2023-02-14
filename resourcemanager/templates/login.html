@@ -82,7 +82,7 @@
         <!-- <p class="msg">{{message}}</p> -->
 
         <div class="main container">
-            <form action=" {% url 'device_register' %}" method="post" class="form-control device"
+            <form action=" {% url 'login' %}" method="post" class="form-control device"
                 style="background-color: #006F71; width: 30rem; height: 20rem;">
                 <!-- {%csrf_token%} -->
 
@@ -104,8 +104,7 @@
 
                 <div class="row mt-4">
                     <div class=" but col mt-3">
-                        <a href="D:\8th SEM\EET 452W\REMAN\resourcemanager\templates\sconfpage"
-                            class="btn btn-success">Submit</a>
+                        <button class="btn btn-success">Submit</button>
                     </div>
                     <div class="buto col mt-3">
                         <button type="reset" class="btn btn-secondary">Reset</button>
