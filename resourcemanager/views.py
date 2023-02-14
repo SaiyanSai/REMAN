@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Student, Device, Uniquekeys ,Staff
+from .models import Student, Device, Staff #, Uniquekeys 
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
@@ -121,16 +121,16 @@ def staff_register(request):
         staffid = request.POST['staffid']
         unikey = request.POST['uniquekey']
         email = request.POST['email']
-    unikey_exist = False
-    try:
-        Uniquekeys.objects.get(unikey = unikey)
-        unikey_exist = True
-    except:
-        print('unikey error')
-        context['message'] = 'UNIKEY PROVIDED DOESNT EXIST'
-        return render(request, 'staff_register.html', context)
-    if unikey_exist:
-        print('unikey exist')
+#    unikey_exist = False
+#    try:
+#        Uniquekeys.objects.get(unikey = unikey)
+#        unikey_exist = True
+#    except:
+#        print('unikey error')
+#        context['message'] = 'UNIKEY PROVIDED DOESNT EXIST'
+#        return render(request, 'staff_register.html', context)
+#    if unikey_exist:
+#        print('unikey exist')
     user_exist = False
     try:
             User.objects.get(username=username)
