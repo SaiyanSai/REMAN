@@ -173,7 +173,7 @@ def givedata(request):
        elif 'uidVal' not in request.POST:
           deviceid = request.POST['deviceId']
           context = {
-               'deviceid' : deviceid
+               'deviceid' : deviceid,
                'msg' : 'error no uid'
           }
        elif 'deviceId' not in request.POST:
