@@ -157,36 +157,25 @@ def givedata(request):
         }
         return JsonResponse(context)
     if request.method == 'POST':
- #       context = {                        #    TO INTERFACE WITH THE RFID PROTOTYPE
- #           'name' : 'sai',
- #           'id': 'R02089475'
- #       }
- #       return JsonResponse(context)
+#         context = {                        #    TO INTERFACE WITH THE RFID PROTOTYPE
+#             'name' : 'sai',
+#             'id': 'R02089475'
+#         }
+#         return JsonResponse(context)
       
-#        if 'uidVal' not in request.POST :
-#            context = {
-#                'MSG' : 'error uidval not in post'
-#           }
-#        if 'deviceId' not in request.POST:
-#             context = {
-#                'MSG' : 'error deviceID not in post'
-#            }
        if 'uidVal' in request.POST and 'deviceId' in request.POST:
-           uid = request.POST['uidVal']
-           deviceid = request.POST['deviceId']
-           context = {
-           #    'name' : name,
-           #    'id ' : 'R02089477',
+          uid = request.POST['uidVal']
+          deviceid = request.POST['deviceId']
+          context = {
                'uid' : uid,
                'deviceid' : deviceid
-
-           }
-       elif 'uidVal' not in request.POST :
-            context = {
-                'MSG' : 'error uidval not in post'
-            }
-       elif if 'deviceId' not in request.POST:
-             context = {
-                'MSG' : 'error deviceID not in post'
-            }
+          }
+       else if 'uidVal' not in request.POST:
+          context = {
+               'msg' : 'error no uid'
+          }
+       else if 'deviceId' not in request.POST:
+          context = {
+               'msg' : 'error no deviceId'
+          }
        return JsonResponse(context)
