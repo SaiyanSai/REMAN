@@ -171,11 +171,15 @@ def givedata(request):
                'deviceid' : deviceid
           }
        elif 'uidVal' not in request.POST:
+          deviceid = request.POST['deviceId']
           context = {
+               'deviceid' : deviceid
                'msg' : 'error no uid'
           }
        elif 'deviceId' not in request.POST:
-          context = {
+        uid = request.POST['uidVal']
+        context = {
+               'uid' : uid
                'msg' : 'error no deviceId'
           }
        return JsonResponse(context)
