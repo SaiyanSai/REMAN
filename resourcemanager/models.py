@@ -10,7 +10,7 @@ class Staff(models.Model):
     staff_id = models.CharField(max_length=20, null = False)
 
 class Student(models.Model):
-    user = user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     ram_id = models.CharField(max_length=20, null = False)
     rfid_uid = models.CharField(max_length =8, default= "00000000")
     EET = 'EET'
@@ -24,11 +24,15 @@ class Student(models.Model):
         default = EET
     )
 
+class Allowed_Users(models.Model):
+    user = models.ForeignKey(Student, on_delete = models.CASCADE)
+
 class Device(models.Model):
     device_id = models.CharField(max_length=10, null=False)
     device_manufacturer = models.CharField(max_length=20, null=False)
     device_name = models.CharField(max_length=20, null=False)
     room_number = models.IntegerField()
+    allowed_users = models.ManyToManyField(Allowed_Users)
     lupton = 'Lupton'
     gleeson = 'Gleeson'
     whitmann = 'Whitmann'
@@ -37,3 +41,15 @@ class Device(models.Model):
                             max_length = 10,
                             choices = hall_choices,
                             default = lupton)
+    
+
+
+class Device_logs(models.Model):
+    user = models.ForeignKey(Student, on_delete = models.CASCADE)
+    username = models.CharField(max_length=20, null=False)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    dev_id = models.CharField(max_length=20, null=False)
+    ram_id = models.CharField(max_length = 20, null = False)
+    room_number = models.IntegerField()
+    hall = models.CharField(max_length=10, null = False)
+    timeoflogin = models.TimeField(auto_now=True, auto_now_add=False)

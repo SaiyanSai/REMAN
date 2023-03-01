@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Student, Device, Staff #, Uniquekeys 
+from .models import Student, Device, Staff, Allowed_Users #, Uniquekeys 
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
@@ -149,6 +149,16 @@ def staff_register(request):
             return render(request, 'staff_register.html',context)
     
 @csrf_exempt
+
+def check_if_allowed(Student, Device):
+    is_allowed = False
+    if Student.id is not None:
+        num_res = Device.allowed_users.filter(user = Student).count()
+        if num_res > 0:
+            is_allowed = True
+    return is_allowed
+
+@csrf_exempt
 def givedata(request):     
     if request.method == 'GET':            #    AN EXAMPLE HTTP REQUEST HANDLER
         context = {                        #    TO INTERFACE WITH THE RFID PROTOTYPE
@@ -170,6 +180,21 @@ def givedata(request):
                'uid' : uid,
                'deviceid' : deviceid
           }
+          try:
+              student = Student.objects.get(rfid_uid = uid)
+              print("user exist")
+          except:
+              context['msg'] = "User doesnt exist in database"
+              return JsonResponse(context)
+          try: 
+              device = Device.objects.get()
+              print("device exist")
+          except:
+              context['msg'] = "Device does not exist in database"
+              return JsonResponse(context)
+          is_allowed = check_if_allowed(student, device)
+          context['permission'] = is_allowed
+          return JsonResponse(context)
        elif 'uidVal' not in request.POST:
  #         deviceid = request.POST['deviceId']
           context = {
