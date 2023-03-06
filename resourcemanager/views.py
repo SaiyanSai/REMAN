@@ -193,6 +193,7 @@ def givedata(request):
               context['msg'] = "Device does not exist in database"
               return JsonResponse(context)
           is_allowed = check_if_allowed(student, device)
+          context = {}
           context['permission'] = is_allowed
           if is_allowed == False:
             return JsonResponse(context)
