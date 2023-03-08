@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Student, Device, Staff, Allowed_Users , Device_logs #, Uniquekeys 
+from .models import Student, Device, Staff, Allowed_Users #, Uniquekeys 
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
@@ -195,11 +195,7 @@ def givedata(request):
           is_allowed = check_if_allowed(student, device)
           context = {}
           context['permission'] = is_allowed
-          if is_allowed == False:
-            return JsonResponse(context)
-          if is_allowed == True:
-            log = Device_logs(user = student, username = student.user.username, device = device, dev_id = device.device_id, ram_id = student.ram_id, room_number  =device.room_number, hall = device.hall)
-            log.save()    
+          return JsonResponse(context)
        elif 'uidVal' not in request.POST:
  #         deviceid = request.POST['deviceId']
           context = {
