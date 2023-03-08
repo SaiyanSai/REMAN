@@ -1,33 +1,3 @@
-<!-- <html>
-    <head>
-        <title>User Login</title>
-        <link rel="stylesheet" href="userlog.css">
-    </head>
-    <body>
-        <div>
-            <nav>
-                <div><h3>Navigation Bar</h3></div>
-                <ul class="links">
-                    <li><a href="userlogin.html">Login</a></li>
-                    <li><a href="staff.html">Staff Registration</a></li>
-                    <li><a href="student.html">Student Registration</a></li>
-                    <li><a href="deviceregister.html">Device Registration</a></li>
-                </ul>
-            </nav>
-            <h2>Login Page</h2><br> 
-            <p class="msg">{{message}}</p> 
-            <form action="{% url 'login' %}" method="post" class="login">
-                {%csrf_token%}
-                <label for = "username"> Username : </label><br>
-                <input type = "text" id = 'username' name = 'username'><br><br>
-                <label for = "psw"> Password : </label><br>
-                <input type = "psw" id = 'psw' name = 'psw'><br><br>
-                <button type = "submit" id="sub">submit</button>
-            </form> 
-        </div>    
-    </body>    
-</html>  -->
-
 <html>
 
 <head>
@@ -35,27 +5,15 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.statically.io/gh/SaiyanSai/REMAN/4df01e4bc3d692d5d7afc5653007eaf5f0e00cd9/resourcemanager/templates/deviceregister.css">
+    <link rel="stylesheet"
+        href="https://cdn.statically.io/gh/SaiyanSai/REMAN/4df01e4bc3d692d5d7afc5653007eaf5f0e00cd9/resourcemanager/templates/deviceregister.css">
 </head>
 
-<body class="bg-success bg-opacity-50">
+<body>
     <div>
-        <!-- <nav class="navbar">
+        <nav class="nv navbar navbar-expand-lg navbar-light" style="background-color: #006F71;">
             <div class="container-fluid">
-                <a href="#navbarmain"><img src="https://fsc-main.b-cdn.net/images/my-fsc-logo.svg" alt="Logo" width="30"
-                        height="24" class="d-inline-block align-text-top">Navigation
-                    Bar</a>
-            </div>
-            <ul class="links">
-                <li><a href="userlogin.html">Login</a></li>
-                <li><a href="staff.html">Staff Registration</a></li>
-                <li><a href="student.html">Student Registration</a></li>
-                <li><a href="deviceregister.html">Device Registration</a></li> bg-body-tertiary
-            </ul>
-        </nav> -->
-        <!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #006F71;">
-            <div class="container-fluid">
-                <a class="navc navbar-brand" href="#">FSC</a>
+                <a class="navc navbar-brand" href="userlogin.html">FSC</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -63,28 +21,29 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="navc nav-link active" aria-current="page" href="userlogin.html">Login</a>
+                            <a class="navc nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navc nav-link" href="staff.html">Staff Registration</a>
+                            <a class="navc nav-link" href="{% url 'staffregister' %}">Staff Registration</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navc nav-link" href="student.html">Student Registration</a>
+                            <a class="navc nav-link" href="{% url 'studentregister'%}">Student Registration</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navc nav-link" href="deviceregister.html">Device Registration</a>
+                            <a class="navc nav-link" href="{% url 'device_register' %}">Device Registration</a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </nav> -->
+        </nav>
+
         <h2 class="display-2 text-center mt-6">Login</h2>
-        <!-- <p class="msg">{{message}}</p> -->
+        <p class="msg">{{message}}</p>
 
         <div class="main container">
             <form action=" {% url 'login' %}" method="post" class="form-control device"
                 style="background-color: #006F71; width: 30rem; height: 20rem;">
-                 {%csrf_token%} 
+                {%csrf_token%}
 
 
 

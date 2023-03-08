@@ -1,43 +1,3 @@
-<!-- <html>
-    <head>
-        <title>Staff registration page</title> 
-        <link rel="stylesheet" href="staff.css">
-    </head>
-    <body>
-        <div>
-            <nav>
-                <div><h3>Navigation Bar</h3></div>
-                <ul class="links">
-                    <li><a href="userlogin.html">Login</a></li>
-                    <li><a href="staff.html">Staff Registration</a></li>
-                    <li><a href="student.html">Student Registration</a></li>
-                    <li><a href="deviceregister.html">Device Registration</a></li>
-                </ul>
-            </nav>
-            <h2>Staff registration</h2>
-            <p class="msg">{{message}}</p>
-            <form action="{% url 'staffregister' %}" method="post" class="staff">
-                {%csrf_token%}
-                <label for = "username"> Username : </label><br>
-                <input type = "text" id = 'username' name = 'username'><br><br>
-                <label for = "email"> Email ID : </label><br>
-                <input type = "email" id = 'email' name = 'email'><br><br>
-                <label for = "psw"> Password : </label><br>
-                <input type = "psw" id = 'psw' name = 'psw'><br><br>
-                <label for = "fname"> First name : </label><br>
-                <input type = "text" id = 'fname' name = 'fname'><br><br>
-                <label for = "lname"> Last name : </label><br>
-                <input type = "text" id = 'lname' name = 'lname'><br><br>
-                <label for = "staffid"> Staff ID : </label><br>
-                <input type = "text" id = 'staffid' name = 'staffid'><br><br>
-                <label for = "uniquekey">  Uniqueode : </label><br>
-                <input type = "text" id = 'uniquekey' name = 'uniquekey'><br><br>
-                <button type = "submit" class="btn btn-success">submit</button>    
-            </form>
-        </div>
-    </body>
-</html> -->
-
 <html>
 
 <head>
@@ -45,25 +5,13 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.statically.io/gh/SaiyanSai/REMAN/4df01e4bc3d692d5d7afc5653007eaf5f0e00cd9/resourcemanager/templates/deviceregister.css">
+    <link rel="stylesheet"
+        href="https://cdn.statically.io/gh/SaiyanSai/REMAN/4df01e4bc3d692d5d7afc5653007eaf5f0e00cd9/resourcemanager/templates/deviceregister.css">
 </head>
 
-<body class="bg-success bg-opacity-50">
+<body>
     <div>
-        <!-- <nav class="navbar">
-            <div class="container-fluid">
-                <a href="#navbarmain"><img src="https://fsc-main.b-cdn.net/images/my-fsc-logo.svg" alt="Logo" width="30"
-                        height="24" class="d-inline-block align-text-top">Navigation
-                    Bar</a>
-            </div>
-            <ul class="links">
-                <li><a href="userlogin.html">Login</a></li>
-                <li><a href="staff.html">Staff Registration</a></li>
-                <li><a href="student.html">Student Registration</a></li>
-                <li><a href="deviceregister.html">Device Registration</a></li> bg-body-tertiary
-            </ul>
-        </nav> -->
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #006F71;">
+        <nav class="nv navbar navbar-expand-lg navbar-light" style="background-color: #006F71;">
             <div class="container-fluid">
                 <a class="navc navbar-brand" href="userlogin.html">FSC</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -73,32 +21,28 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="navc nav-link" aria-current="page" style="color: azure;"
-                                href="userlogin.html">Login</a>
+                            <a class="navc nav-link" aria-current="page" href="{% url 'login' %}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navc nav-link active" href="staff.html">Staff Registration</a>
+                            <a class="navc nav-link active" href="{% url 'staffregister' %}">Staff Registration</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navc nav-link" href="student.html">Student Registration</a>
+                            <a class="navc nav-link" href="{% url 'studentregister'%}">Student Registration</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navc nav-link" href="deviceregister.html">Device Registration</a>
+                            <a class="navc nav-link " href="{% url 'device_register' %}">Device Registration</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <h2 class="display-2 text-center mt-4">Staff registration</h2>
-        <!-- <p class="msg">{{message}}</p> -->
+        <p class="msg">{{message}}</p>
 
         <div class="main container">
             <form action=" {% url 'device_register' %}" method="post" class="form-control device"
                 style="background-color: #006F71; width:30rem; height: 38rem;">
-                <!-- {%csrf_token%} -->
-
-
-
+                {%csrf_token%}
 
                 <div class=" form-outline mb-3 mt-4 ">
                     <label for="deviceid">Username</label>
@@ -106,21 +50,17 @@
                         style="display: flex; justify-items: right ;">
                 </div>
 
-
-                <!-- <br>
-            <br> -->
-
                 <div class="form-outline mb-3 ">
                     <label class="form-label" for="deviceman" style="color: azure;">Email</label>
                     <input class="dev card" type="email" id='deviceman' name='deviceman' placeholder="Email">
 
                 </div>
 
-
                 <div class="form-group mb-3 ">
                     <label for="devicename">Password</label>
                     <input class="dev card" type="password" id='devicename' name='devicename' placeholder="Password">
                 </div>
+
                 <div class="form-group mb-4 ">
                     <label for="roomnumber">First Name</label>
                     <input class="dev card" type="text" id='roomnumber' name='roomnumber' placeholder="First Name">
@@ -136,35 +76,18 @@
                     <input class="dev card" type="text" id='roomnumber' name='roomnumber' placeholder="Staff ID">
                     <!--continue from here-->
                 </div>
-                <div class="form-group mb-4 ">
-                    <label for="roomnumber">Unique Pin</label>
-                    <input class="dev card" type="text" id='roomnumber' name='roomnumber' placeholder="unique code">
-                    <!--continue from here-->
-                </div>
-                <!-- <div class="sel form-group  text-center">
-                    <label for="building"></label>
-                    <div class="soc ">
 
-                        <select class="form-select" id="building" name="building">
-                            <option class="active">Please Select a Building</option>
-                            <option value='Lupton'>Lupton</option>
-                            <option value='Gleeson'>Gleeson</option>
-                            <option value='Whitman'>Whitman</option>
 
-                        </select>
-                    </div>
-
-                </div> -->
                 <div class="row mt-4">
                     <div class=" but col mt-3">
-                        <a href="#" class="btn btn-success">Submit</a>
+                        <button href="#" class="btn btn-success">Submit</button>
                     </div>
                     <div class="buto col mt-3">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                     </div>
 
                 </div>
-                <!-- <button type="submit">submit</button> -->
+
             </form>
         </div>
     </div>
