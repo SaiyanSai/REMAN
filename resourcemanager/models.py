@@ -44,7 +44,7 @@ class Device(models.Model):
     
 
 
-class Device_logs(models.Model):
+class Device_logs(models.Model): #Scan Date is missing add that
     user = models.ForeignKey(Student, on_delete = models.CASCADE)
     username = models.CharField(max_length=20, null=False)
     device = models.ForeignKey(Device, on_delete=models.CASCADE)

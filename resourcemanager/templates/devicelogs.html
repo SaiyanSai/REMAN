@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <head>
+            <body>
+                <table>
+                <h1> DEVICE LOGS PAGE    
+                    <thead>
+                        <tr>
+                            <th>Usernname</th>
+                            <th>Device Id</th>
+                            <th>Ram Id</th>
+                            <th>Hall</th>
+                            <th>Room Number</th>
+                            <th>Time of Scan</th>
+
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        {% for log in all_logs %}
+                        <tr>
+                            <td>{{log.username}}</td>
+                            <td>{{log.dev_id}}</td>
+                            <td>{{log.ram_id}}</td>
+                            <td>{{log.hall}}</td>
+                            <td>{{log.room_number}}</td>
+                            <td>{{log.timeoflogin}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </body>
+</html>

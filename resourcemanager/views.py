@@ -12,6 +12,11 @@ def index(request):             #view to display the index page
      context['name'] = 'sai'
      return render(request, 'index.html',context)
 
+def devicelogs(request):
+    all_logs = Device_logs.objects.all()
+    context = {'all_logs' : all_logs}
+    return render(request, 'devicelogs.html', context)
+
 def student_register(request):            #view for users to sign up
     user = request.user
     try:
