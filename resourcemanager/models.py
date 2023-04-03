@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from datetime import datetime, timedelta, date
 
 # Create your models here.
 #class Uniquekeys(models.Model):
@@ -52,4 +53,5 @@ class Device_logs(models.Model): #Scan Date is missing add that
     ram_id = models.CharField(max_length = 20, null = False)
     room_number = models.IntegerField()
     hall = models.CharField(max_length=10, null = False)
-    timeoflogin = models.TimeField(auto_now=True, auto_now_add=False)
+    timeoflogin = models.TimeField((datetime.now() - timedelta(hours=3)), auto_now_add=True, null=False)
+    dateoflogin = models.DateField(date.today(), default=date.today())

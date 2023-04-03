@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    {% load static %}
+    {% load humanize %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,12 +50,12 @@
                 <div>
                     <tr>
                         <th class="text-success" scope="col">Usernname</th>
-                        <th class="text-success" scope="col">Device Id</th>
                         <th class="text-success" scope="col">Ram Id</th>
-                        <th class="text-success" scope="col">Hall</th> <!--needs to be changed by sai eg: LUP 322  -->
+                        <th class="text-success" scope="col">Device Id</th>
+                        <th class="text-success" scope="col">Device Name</th>   
                         <th class="text-success" scope="col">Room Number</th>
                         <th class="text-success" scope="col">Date and Time of Scan</th>
-                        <th class="text-success" scope="col">Device Name</th>
+                        
 
 
                     </tr>
@@ -63,11 +65,12 @@
                 {% for log in all_logs %}
                 <tr>
                     <td>{{log.username}}</td>
-                    <td>{{log.dev_id}}</td>
                     <td>{{log.ram_id}}</td>
-                    <td>{{log.hall}}</td>
-                    <td>{{log.room_number}}</td>
-                    <td>{{log.timeoflogin}}</td>
+                    <td>{{log.dev_id}}</td>
+                    <td>{{log.device.device_name}}</td>
+                    <td>{{log.hall}} {{log.room_number}}</td>
+                    <td>{{log.timeoflogin|time:"h:i A"}} {{log.dateoflogin}}</td>
+                    
                 </tr>
                 {% endfor %}
 

@@ -3,3 +3,4 @@ Django==4.0.6
 django-db==0.0.7
 gunicorn==20.1.0
 whitenoise
+django-humanize
