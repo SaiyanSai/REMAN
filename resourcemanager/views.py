@@ -206,7 +206,7 @@ def givedata(request):
             return JsonResponse(context)
           if is_allowed == True:
             current_time = datetime.now()
-            new_time = current_time - timedelta(hours=3)
+            new_time = current_time - timedelta(hours=4)
             print(new_time)
             log = Device_logs(user = student, username = student.user.username, device = device, dev_id = device.device_id, ram_id = student.ram_id, room_number  =device.room_number, hall = device.hall, timeoflogin = new_time)
             log.save()    
