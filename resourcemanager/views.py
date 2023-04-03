@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .models import Student, Device, Staff, Allowed_Users , Device_logs #, Uniquekeys 
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime, timedelta
 # Create your views here.
+
 
 def index(request):             #view to display the index page
      context = {}
@@ -203,7 +205,10 @@ def givedata(request):
           if is_allowed == False:
             return JsonResponse(context)
           if is_allowed == True:
-            log = Device_logs(user = student, username = student.user.username, device = device, dev_id = device.device_id, ram_id = student.ram_id, room_number  =device.room_number, hall = device.hall)
+            current_time = datetime.now()
+            new_time = current_time - timedelta(hours=3)
+            print(new_time)
+            log = Device_logs(user = student, username = student.user.username, device = device, dev_id = device.device_id, ram_id = student.ram_id, room_number  =device.room_number, hall = device.hall, timeoflogin = new_time)
             log.save()    
        elif 'uidVal' not in request.POST:
  #         deviceid = request.POST['deviceId']
