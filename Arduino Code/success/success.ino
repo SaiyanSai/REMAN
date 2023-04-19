@@ -183,7 +183,19 @@ void loop() {
       lcd.print("Authorized");
       Serial.println("bd");
       digitalWrite(relay,HIGH);
-      delay(5000);
+      for (int time=10;time>=0;time--)
+      {
+        if(time<=2)
+        {
+          Serial.println("warning time remaining");
+          Serial.println(time);
+        }
+        delay(1000);
+        if(time == 1){
+          digitalWrite(relay,LOW);
+          return;
+        }
+      }   
       Serial.println("ad");
     }
     else if(last == '1')
