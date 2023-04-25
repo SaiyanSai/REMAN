@@ -36,29 +36,49 @@
         </div>
     </nav>
     {% if user.is_authenticated %}
-    <h1>Sconfpage - {{name}}</h1>
-    <h2>just a sample page to see if post requests are working</h2>
-    <div>
+    <div class="display-2 text-center mt-4">
+        <h1>Welcome {{user.first_name}}</h1>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <!-- <i class="bi bi-person-plus"></i> -->
+                <img src="D:\8th SEM\EET 452W\Reman\REMAN\resourcemanager\templates\folder.png" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Device Log</h5>
+                    <p class="card-text">Click below to view the Logs of all the devices</p>
+                    <a href="{% url 'devicelogs' %}" class="btn btn-primary">Click here</a>
+                </div>
+            </div>
+        </div>
 
-        <p>Welcome {{user.first_name}}</p>
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="D:\8th SEM\EET 452W\Reman\REMAN\resourcemanager\templates\device.png" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Active devices</h5>
+                    <p class="card-text">Click below to view the active devices</p>
+                    <a href="{% url '#' %}" class="btn btn-primary">Click here</a>
+                </div>
+            </div>
+        </div>
 
 
     </div>
-    <div>
-        <P>This is the page where user can find the device logs will be updated later</P>
-    </div>
+
 
     {% else %}
+    <P>ACCESS DENIED</p>
     <div>
-        <P>ACCESS DENIED</p>
-        <div>
-            {% endif %}
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-                crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-                crossorigin="anonymous"></script>
+        {% endif %}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
