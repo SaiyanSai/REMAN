@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
-from .models import Student, Device, Staff, Allowed_Users , Device_logs #, Uniquekeys 
+from .models import Student, Device, Staff, Allowed_Users , Device_logs, ActiveDevices #, Uniquekeys 
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime, timedelta
 # Create your views here.
@@ -209,6 +209,8 @@ def givedata(request):
             new_time = current_time - timedelta(hours=4)
             print(new_time)
             log = Device_logs(user = student, username = student.user.username, device = device, dev_id = device.device_id, ram_id = student.ram_id, room_number  =device.room_number, hall = device.hall, timeoflogin = new_time)
+            ActiveDevice = ActiveDevices(d_id = device.device_id, d_name = device.device_name, d_room = device.room_number, d_hall = device.hall)
+            ActiveDevice.save()
             log.save()    
        elif 'uidVal' not in request.POST:
  #         deviceid = request.POST['deviceId']
@@ -223,3 +225,16 @@ def givedata(request):
                'msg' : 'error no deviceId'
           }
        return JsonResponse(context)
+
+@csrf_exempt
+def ActiveDevicespage(request):
+    if request.method == 'GET':
+        devices = ActiveDevices.objects.all()
+        context = {'activedevices' : devices}
+        return render(request, 'activedevices.html', context)
+    if request.method == 'POST':
+        deviceid = request.POST['deviceId']
+        print("deleteing : ", deviceid)
+        context = {'msg' : 'Entries deleted'}
+        ActiveDevices.objects.filter(d_id = deviceid).delete()
+        return JsonResponse(context)

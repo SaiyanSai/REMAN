@@ -55,3 +55,9 @@ class Device_logs(models.Model): #Scan Date is missing add that
     hall = models.CharField(max_length=10, null = False)
     timeoflogin = models.TimeField(default = datetime.now())
     dateoflogin = models.DateField(date.today(), default=date.today())
+
+class ActiveDevices(models.Model):
+    d_id = models.CharField(max_length = 20, null = False )
+    d_name = models.CharField(max_length = 20, null = False)
+    d_hall = models.CharField(max_length = 10, null = False)
+    d_room = models.IntegerField()

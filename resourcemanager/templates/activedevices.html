@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dealership Review</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+
+<h1> Active Devices </h1>
+
+{% for device in activedevices %}
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+    <div class="card-header">ID : {{device.d_id}}</div>
+    <div class="card-body text-success">
+      <h5 class="card-title">Device Name: {{device.d_name}}</h5>
+      <h6 class="card-title">Room: {{device.d_hall}}-{{device.d_room}}</h5>
+      <p class="card-text">Stauts: Active</p>
+       <!-- replace above line with a active button if possible @vishal  -->
+    </div>
+  </div>
+
+
+{% endfor %}

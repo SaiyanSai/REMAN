@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Staff, Student, Device, Allowed_Users, Device_logs #, Uniquekeys
+from .models import Staff, Student, Device, Allowed_Users, Device_logs, ActiveDevices #, Uniquekeys
 
 # Register your models here.
 class StudentAdmin(admin.ModelAdmin):
@@ -14,3 +14,4 @@ admin.site.register(Staff)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Allowed_Users)
 admin.site.register(Device_logs)
+admin.site.register(ActiveDevices)

@@ -11,4 +11,5 @@ urlpatterns = [
     path('staffregister/', views.staff_register, name = 'staffregister'),
     path('givedata/',views.givedata, name = 'givedata'),  # example http end point
     path('devicelogs/', views.devicelogs, name = 'devicelogs'),
+    path('activedevices/', views.ActiveDevicespage, name = 'activedevcies'),
 ]
