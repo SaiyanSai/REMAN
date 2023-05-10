@@ -40,52 +40,52 @@
         <p class="msg">{{message}}</p>
 
         <div class="main container">
-            <form action=" {% url 'device_register' %}" method="post" class="form-control device"
+            <form action=" {% url 'studentregister' %}" method="post" class="form-control device"
                 style="background-color: #006F71; width:30rem; height: 42rem;">
                 {%csrf_token%}
 
                 <div class=" form-outline mb-3 mt-3 ">
                     <label for="deviceid">Username</label>
-                    <input class=" dev card" type="text" id='deviceid' name='deviceid' placeholder="Username"
+                    <input class=" dev card" type="text" id='username' name='username' placeholder="Username"
                         style="display: flex; justify-items: right ;">
                 </div>
 
                 <div class="form-outline mb-3 ">
                     <label class="form-label" for="deviceman" style="color: azure;">Email</label>
-                    <input class="dev card" type="email" id='deviceman' name='deviceman' placeholder="Email">
+                    <input class="dev card" type="email" id='email' name='email' placeholder="Email">
 
                 </div>
 
 
                 <div class="form-group mb-3 ">
                     <label for="devicename">Password</label>
-                    <input class="dev card" type="password" id='devicename' name='devicename' placeholder="Password">
+                    <input class="dev card" type="password" id='psw' name='psw' placeholder="Password">
                 </div>
                 <div class="form-group mb-3 ">
                     <label for="roomnumber">First Name</label>
-                    <input class="dev card" type="text" id='roomnumber' name='roomnumber' placeholder="First Name">
+                    <input class="dev card" type="text" id='fname' name='fname' placeholder="First Name">
                     <!--continue from here-->
                 </div>
                 <div class="form-group mb-3 ">
                     <label for="roomnumber">Last Name</label>
-                    <input class="dev card" type="text" id='roomnumber' name='roomnumber' placeholder="Last Name">
+                    <input class="dev card" type="text" id='lname' name='lname' placeholder="Last Name">
                     <!--continue from here-->
                 </div>
                 <div class="form-group mb-3 ">
                     <label for="roomnumber">RAM ID</label>
-                    <input class="dev card" type="text" id='roomnumber' name='roomnumber' placeholder="RAM ID">
+                    <input class="dev card" type="text" id='ramid' name='ramid' placeholder="RAM ID">
                     <!--continue from here-->
                 </div>
                 <div class="form-group mb-3 ">
                     <label for="roomnumber">RFID_UID</label>
-                    <input class="dev card" type="text" id='roomnumber' name='roomnumber' placeholder="UID">
+                    <input class="dev card" type="text" id='rfiduid' name='rfiduid' placeholder="UID">
                     <!--continue from here-->
                 </div>
                 <div class="sel form-group  text-center">
                     <label for="building"></label>
                     <div class="soc ">
 
-                        <select class="form-select mt-3" id="building" name="building">
+                        <select class="form-select mt-3" id="course" name="course">
                             <option class="active">Please Select a course</option>
                             <option value='Lupton'>EET</option>
                             <option value='Gleeson'>MET</option>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class=" but col mt-3">
-                        <a href="#" class="btn btn-success">Submit</a>
+                        <button class="btn btn-success">Submit</button>
                     </div>
                     <div class="buto col mt-3">
                         <button type="reset" class="btn btn-secondary">Reset</button>

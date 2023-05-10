@@ -53,7 +53,7 @@ def student_register(request):            #view for users to sign up
             print("New User")
         if not user_exist:
             user = User.objects.create_user(username=username, first_name=fname, last_name=lname, password=psw)
-            login(request, user)
+            #login(request, user)
             stu = Student(user=user,ram_id=ramid,course=course,rfid_uid = rfid_uid)
             stu.save()
             return render(request, 'sconfpage.html', context)
