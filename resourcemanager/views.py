@@ -15,6 +15,11 @@ def index(request):             #view to display the index page
      return render(request, 'index.html',context)
 
 def devicelogs(request):
+    user = request.user
+    try:
+        staff = Staff.objects.get(user = user)
+    except:
+         return HttpResponse("User not autheticated to view this page")    
     all_logs = Device_logs.objects.all()
     context = {'all_logs' : all_logs}
     return render(request, 'devicelogs.html', context)
@@ -116,6 +121,11 @@ def device_register(request):
             return render(request, 'device_register.html', context)
         
 def staff_register(request):
+    user = request.user
+    try:
+        staff = Staff.objects.get(user = user)
+    except:
+         return HttpResponse("User not autheticated to view this page")    
     if request.method == 'GET':
         context = {}
         return render(request, 'staff_register.html', context)
